@@ -5,6 +5,7 @@ import io.github.luishbruneri.msavaliadorcredito.application.ex.DadosClienteNotF
 import io.github.luishbruneri.msavaliadorcredito.application.ex.ErroComunicacaoMicroservicesException;
 import io.github.luishbruneri.msavaliadorcredito.domain.model.CartaoCliente;
 import io.github.luishbruneri.msavaliadorcredito.domain.model.DadosCliente;
+import io.github.luishbruneri.msavaliadorcredito.domain.model.RetornoAvaliacaoCliente;
 import io.github.luishbruneri.msavaliadorcredito.domain.model.SituacaoCliente;
 import io.github.luishbruneri.msavaliadorcredito.infra.clients.CartoesResourceClient;
 import io.github.luishbruneri.msavaliadorcredito.infra.clients.ClienteResourceClient;
@@ -34,5 +35,10 @@ public class AvaliadorCreditoService {
             }
             throw new ErroComunicacaoMicroservicesException(e.getMessage(), status);
         }
+    }
+
+    public RetornoAvaliacaoCliente realizarAvaliacao(String cpf, Long renda){
+        ResponseEntity<DadosCliente> dados = clienteResourceClient.dadosCliente(cpf);
+
     }
 }
